@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<namespace xmlns="http://www.mulesoft.org/schema/mule/tooling.attributes" xmlns:mule="http://www.mulesoft.org/schema/mule/core" prefix="hello" url="http://www.mulesoft.org/schema/mule/hello">
+  <global-cloud-connector metaData="static" connectivityTesting="on" extends="http://www.mulesoft.org/schema/mule/hello/abstractHelloConnectorGeneric" abstract="true" image="" localId="parentConfig" icon="" description="" caption="Hello" versions="[3.4.0,8.0.0]"></global-cloud-connector>
+  <global-cloud-connector metaData="static" connectivityTesting="on" extends="http://www.mulesoft.org/schema/mule/hello/parentConfig" abstract="false" image="icons/large/hello-connector-48x32.png" localId="config" icon="icons/small/hello-connector-24x16.png" description="Global Hello configuration information." caption="Hello" versions="[3.4.0,8.0.0]">
+    <attribute-category description="Hello configuration properties." caption="General">
+      <group caption="Generic" id="helloGenericProperties">
+        <name required="true" description="Give a name to this configuration so it can be later referenced by config-ref." caption="Name" name="name"></name>
+      </group>
+      <group caption="General" id="general">
+        <string defaultValue="http://reyness.cloudhub.io" javaType="java.lang.String" required="false" description="CloudHub API Url." caption="Api Url" name="apiUrl"></string>
+        <string javaType="java.lang.String" required="true" description="Port." caption="Port" name="port"></string>
+      </group>
+    </attribute-category>
+  </global-cloud-connector>
+  <cloud-connector abstract="true" image="icons/large/hello-connector-48x32.png" localId="abstractHelloConnectorGeneric" icon="icons/small/hello-connector-24x16.png" description="Interact with Hello." caption="Abstracthelloconnectorgeneric">
+    <attribute-category description="General." caption="General">
+      <group caption="Generic" id="abstractHelloConnectorGeneric">
+        <globalRef requiredType="http://www.mulesoft.org/schema/mule/hello/config" required="true" description="Specify which configuration to use for this invocation." caption="Config Reference" name="config-ref"></globalRef>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector extends="http://www.mulesoft.org/schema/mule/hello/abstractHelloConnectorGeneric" image="icons/large/hello-connector-48x32.png" localId="hello-connector" icon="icons/small/hello-connector-24x16.png" description="Cloud Connector." caption="Hello" aliasId="org.mule.tooling.ui.modules.core.pattern.hello" versions="[3.4.0,8.0.0]">
+    <attribute-category description="General." caption="General">
+      <group caption="Generic" id="helloConnectorGeneric">
+        <modeSwitch alwaysCombo="true" description="Operation." caption="Operation" name="Hello operations to execute">
+          <mode modeLabel="Get hello" modeId="http://www.mulesoft.org/schema/mule/hello/get-hello"></mode>
+        </modeSwitch>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.String" metaData="static" extends="http://www.mulesoft.org/schema/mule/hello/abstractHelloConnectorGeneric" abstract="true" image="icons/large/hello-connector-48x32.png" localId="get-hello" icon="icons/small/hello-connector-24x16.png" caption="Get Hello">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="Company Name." caption="Company" name="company"></string>
+        <string javaType="java.lang.String" required="true" description="First Name." caption="Fname" name="fname"></string>
+        <string javaType="java.lang.String" required="true" description="Last Name." caption="Lname" name="lname"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+</namespace>

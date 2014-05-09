@@ -1,0 +1,3 @@
+<!-- BEGIN_INCLUDE(hello:get-hello) -->
+    <hello:get-hello company="#[map-payload:company]" fname="#[map-payload:fname]" lname="#[map-payload:lname]" />
+<!-- END_INCLUDE(hello:get-hello) -->
